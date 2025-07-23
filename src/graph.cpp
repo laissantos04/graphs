@@ -71,13 +71,18 @@ void print_graph(Graph *g) {
     cout << "Graph " << (g->is_directed ? "directed" : "not directed") << endl;
     
     for (int v = 0; v < g->V; v++) {
-        cout << v << " (out=" << g->out_degree[v];
-        if (g->is_directed) cout << ", in=" << g->in_degree[v];
-        cout << "): ";
+        if (g->is_directed) {
+            cout << "Vertex[" << v << "] (out=" << g->out_degree[v];
+            if (g->is_directed) cout << ", in=" << g->in_degree[v];
+            cout << "): ";
+        } else {
+            cout << "Vertex[" << v << "] (degree = " << g->degree[v];            
+            cout << "): ";            
+        }
 
         for (Link node = g->adj[v]; node != nullptr; node = node->next) {
-            cout << node->vertex << " ";
+            cout << "[" << node->vertex << "] -> ";
         }
-        cout << endl;
+        cout << "[NULL]" << endl;
     }
 }

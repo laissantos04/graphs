@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "editor.suggest.showWords": false,
+    "editor.quickSuggestions": {
+        "other": "inline"
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": true
+}

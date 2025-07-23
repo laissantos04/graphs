@@ -18,6 +18,7 @@ struct Graph {
   bool is_directed;
   int *degree;
 
+  //Para grafos direcionados
   int *in_degree;
   int *out_degree;
 };
@@ -27,6 +28,5 @@ void destroy_graph(Graph *g);
 Link new_node(Vertex v, Link next);
 void insert_edge(Graph *g, Vertex v, Vertex w);
 void print_graph(Graph *g);
+
 #endif
-
-
