@@ -4,6 +4,7 @@ com base nos graus de cada vértice. */
 #include "Graph.hpp"
 #include "Algorithms.hpp"
 
+
 void insert_list(Link *S, int degree, Vertex v) {
     Link node = new_node(v, S[degree]);
     S[degree] = node;
@@ -25,7 +26,11 @@ Link* clear_buckets(Link *S, int n, int min, int max) {
     return sorted;
 }
 
-Link* bucket_sort(Graph *g, int min, int max) {
+/* Caso o grafo seja direcionado, podemos determinar qual o critério
+de ordenação (o grau de entrada ou de saída) com base no objetivo da aplicação.
+Caso não seja direcionado, deve-se usar 'undirected'. */
+
+Link* bucket_sort(Graph *g, int min, int max, Requirement req) {
 
     int bucket_size = max + 1;
     Link *S = new Link[bucket_size];
@@ -34,9 +39,18 @@ Link* bucket_sort(Graph *g, int min, int max) {
         S[i] = nullptr;
     }
 
-    for (int i = 0; i < g->V; i++) {
-        // Para grafos não direcionados
-        insert_list(S, g->degree[i], i);
+    if (!g->is_directed) {
+        for (int i = 0; i < g->V; i++) {
+            insert_list(S, g->degree[i], i);
+        }
+    } else {
+        for (int i = 0; i < g->V; i++) {
+            if (req == Requirement::out) {
+                insert_list(S, g->out_degree[i], i);
+            } else if (req == Requirement::in) {
+                insert_list(S, g->in_degree[i], i);
+            }
+        }
     }
 
     return clear_buckets(S, g->V, min, max);

@@ -43,9 +43,14 @@ void destroy_graph(Graph *g) {
     }
 
     delete[] g->adj;
-    delete[] g->out_degree;
-    if (g->is_directed) delete[] g->in_degree;
     
+    if (g->is_directed) {
+        delete[] g->in_degree;
+        delete[] g->out_degree;
+    } else {
+        delete[] g->degree;
+    }
+
     delete g;
 }
 

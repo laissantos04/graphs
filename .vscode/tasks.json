@@ -10,6 +10,7 @@
                 "main.cpp",
                 "src/graph.cpp",
                 "src/bucket_sort.cpp",
+                "src/kahns_algorithm.cpp",
                 "-Iinclude",
                 "-o",
                 "exe"

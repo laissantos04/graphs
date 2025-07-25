@@ -3,6 +3,9 @@
 
 #include "../include/Graph.hpp"
 
-Link *bucket_sort(Graph *g, int min, int max);
+enum class Requirement { in, out, undirected };
+
+Link *bucket_sort(Graph *g, int min, int max, Requirement req);
+Link *kahns_algorithm(Graph *g);
 
 #endif
