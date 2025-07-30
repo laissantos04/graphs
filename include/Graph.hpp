@@ -23,6 +23,10 @@ struct Graph {
   int *out_degree;
 };
 
+struct Graph_Disjointed {
+
+};
+
 Graph *create_graph(int n, bool is_directed);
 void destroy_graph(Graph *g);
 Link new_node(Vertex v, Link next);
